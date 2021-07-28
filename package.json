@@ -9,7 +9,8 @@
     "my-electron-app": "^0.0.11"
   },
   "devDependencies": {
-    "electron": "^13.1.7"
+    "electron": "^13.1.7",
+    "fluent-ffmpeg": "^2.1.2"
   },
   "scripts": {
     "start": "electron ."
