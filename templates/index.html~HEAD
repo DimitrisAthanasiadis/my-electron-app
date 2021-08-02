@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
     integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
   <title>Hello World!</title>
 </head>
 
@@ -26,20 +26,27 @@
     <div class="row" >
       <form>
         <div>
-          <label for="file">Choose a file:</label>
-          <input id="file" type="file" title="Choose a file" />
+          <label for="file">Choose a video:</label>
+          <input id="file" type="file" title="Choose a file" accept="video/*" />
         </div>
-        <button id="upload" type="submit">Upload</button>
+        <button id="upload_video" type="submit">Submit</button>
       </form>
-    </div>  
+    </div>
   </div>
 </body>
-  <script>
-    document.querySelector("form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      const file = document.getElementById("file").files[0];
-    });
-  </script>
 
+<script>
+  const electron = require("electron)");
+  const { ipcRenderer } = electron;
+
+  document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const file = document.querySelector('#file').files[0];
+    // debugger;
+    // ffmpeg.ffprobe(file.path, (err, metadata) => {
+    //   console.dir(metadata)
+    // });
+  });
+</script>
 
 </html>
